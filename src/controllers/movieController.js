@@ -29,8 +29,9 @@ const router = {
             if (!title || !genre || !director || !duration || !premiere) {
                 throw new Error("Todos os campos são obrigatórios.");
             }
-            const newMovie = new Movie(title, genre, director, duration, premiere);
-            lista.addMovie(newMovie);
+            const movie = new Movie(title, genre, director, duration, premiere);
+            lista.addMovie(movie);
+            res.status(200).json({ message: "Filme adicionado com sucesso!"})
         } catch (error) {
             res.status(400).json({ message: error.message, error });
         }
